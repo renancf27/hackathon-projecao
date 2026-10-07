@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hackathon do Projeção | 30/10 Edição Halloween</title>
+  <meta name="description" content="Hackathon do Projeção, edição Halloween. 30 de outubro de 2026, a partir das 08:00. Premiação para Calouros e Veteranos, brindes, atividades temáticas e muita programação.">
+  <meta name="theme-color" content="#0d0a17">
+
+  <!-- Compartilhamento (WhatsApp, Instagram, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hackathon do Projeção | 30/10">
+  <meta property="og:description" content="Ideias assustadoramente incríveis ganham vida aqui! Inscreva-se.">
+  <meta property="og:image" content="assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎃</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0d0a17;
+      --bg-2:#151026;
+      --card:#1b1530;
+      --line:#2e2650;
+      --text:#f4f0ff;
+      --muted:#b7aed6;
+      --orange:#ff7a1a;
+      --orange-2:#ffb020;
+      --green:#8cff3a;
+      --cyan:#3ef0e6;
+      --pink:#ff3fa4;
+      --radius:18px;
+      --max:1120px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit}
+    .wrap{width:min(var(--max),100% - 32px);margin-inline:auto}
+
+    /* ---------- Olhos no escuro ---------- */
+    .eyes{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+    .eye{
+      position:absolute;display:flex;gap:10px;opacity:.75;
+      animation:blink 6s infinite;
+    }
+    .eye span{
+      width:22px;height:9px;border-radius:50%;
+      background:currentColor;box-shadow:0 0 12px currentColor,0 0 26px currentColor;
+      clip-path:ellipse(50% 50% at 50% 50%);
+    }
+    .eye span:first-child{transform:rotate(18deg)}
+    .eye span:last-child{transform:rotate(-18deg)}
+    @keyframes blink{
+      0%,92%,100%{transform:scaleY(1)}
+      95%{transform:scaleY(.05)}
+    }
+
+    /* ---------- Topo ---------- */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(13,10,23,.82);
+      backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+    .brand{white-space:nowrap;font-family:"Bebas Neue",sans-serif;font-size:1.6rem;letter-spacing:1px;text-decoration:none;display:flex;align-items:center;gap:8px}
+    .brand b{color:var(--orange)}
+    .nav ul{display:flex;gap:22px;list-style:none}
+    .nav ul a{text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+    .nav ul a:hover{color:var(--text)}
+    @media (max-width:820px){.nav ul{display:none}.nav > .btn{display:none}}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      padding:14px 26px;border-radius:999px;border:0;cursor:pointer;
+      font:700 1rem "Inter",sans-serif;text-decoration:none;
+      background:linear-gradient(135deg,var(--orange),var(--orange-2));
+      color:#1a0d00;
+      box-shadow:0 0 0 0 rgba(255,122,26,.6),0 10px 30px -8px rgba(255,122,26,.7);
+      transition:transform .15s ease,box-shadow .2s ease;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 0 0 6px rgba(255,122,26,.15),0 14px 36px -8px rgba(255,122,26,.9)}
+    .btn.sm{padding:10px 18px;font-size:.9rem}
+    .btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--line);box-shadow:none}
+    .btn.ghost:hover{border-color:var(--orange)}
+    .pulse{animation:pulse 2.4s infinite}
+    @keyframes pulse{
+      0%{box-shadow:0 0 0 0 rgba(255,122,26,.55),0 10px 30px -8px rgba(255,122,26,.7)}
+      70%{box-shadow:0 0 0 16px rgba(255,122,26,0),0 10px 30px -8px rgba(255,122,26,.7)}
+      100%{box-shadow:0 0 0 0 rgba(255,122,26,0),0 10px 30px -8px rgba(255,122,26,.7)}
+    }
+
+    main,footer{position:relative;z-index:1}
+
+    /* ---------- Hero ---------- */
+    .hero{padding:56px 0 40px}
+    .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+    @media (max-width:900px){.hero-grid{grid-template-columns:1fr;gap:32px}}
+    .tag{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 14px;border-radius:999px;
+      background:rgba(140,255,58,.1);border:1px solid rgba(140,255,58,.35);
+      color:var(--green);font-weight:600;font-size:.85rem;margin-bottom:18px;
+    }
+    .hero h1{
+      font-family:"Creepster",cursive;font-weight:400;
+      font-size:clamp(3rem,8vw,5.6rem);line-height:.95;letter-spacing:2px;
+      color:var(--orange);
+      text-shadow:0 0 24px rgba(255,122,26,.55),0 4px 0 #6b2a00;
+    }
+    .hero h1 small{display:block;font-family:"Bebas Neue",sans-serif;color:var(--text);font-size:.5em;letter-spacing:3px;text-shadow:none;margin-top:6px}
+    .hero p.lead{font-size:1.15rem;color:var(--muted);margin:20px 0 26px;max-width:520px}
+    .hero p.lead strong{color:var(--orange-2)}
+    .facts{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:28px}
+    .fact{
+      display:flex;align-items:center;gap:10px;
+      background:var(--card);border:1px solid var(--line);
+      padding:10px 16px;border-radius:12px;font-weight:600;
+    }
+    .fact .ic{font-size:1.25rem}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px}
+
+    .poster{
+      position:relative;border-radius:22px;overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow:0 30px 80px -20px rgba(255,122,26,.35),0 0 0 1px rgba(255,255,255,.03);
+      transform:rotate(1.2deg);
+      transition:transform .4s ease;
+    }
+    .poster:hover{transform:rotate(0) scale(1.01)}
+
+    /* ---------- Contagem regressiva ---------- */
+    .countdown{
+      margin-top:12px;
+      background:linear-gradient(180deg,var(--bg-2),var(--card));
+      border:1px solid var(--line);border-radius:var(--radius);
+      padding:28px 20px;text-align:center;
+    }
+    .countdown h2{font-family:"Bebas Neue",sans-serif;letter-spacing:2px;font-weight:400;font-size:1.5rem;color:var(--muted);margin-bottom:14px}
+    .timer{display:flex;justify-content:center;gap:clamp(8px,3vw,24px);flex-wrap:wrap}
+    .unit{min-width:64px}
+    .unit b{
+      display:block;font-family:"Bebas Neue",sans-serif;font-weight:400;
+      font-size:clamp(2.6rem,9vw,4.2rem);line-height:1;color:var(--orange);
+      text-shadow:0 0 18px rgba(255,122,26,.45);
+      font-variant-numeric:tabular-nums;
+    }
+    .unit span{font-size:.8rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+    .timer-done{font-family:"Creepster",cursive;font-size:2.2rem;color:var(--green)}
+
+    /* ---------- Seções ---------- */
+    section{padding:72px 0}
+    .sec-head{text-align:center;max-width:680px;margin:0 auto 40px}
+    .sec-head .kicker{color:var(--green);font-weight:700;letter-spacing:3px;text-transform:uppercase;font-size:.8rem}
+    .sec-head h2{
+      font-family:"Creepster",cursive;font-weight:400;letter-spacing:2px;
+      font-size:clamp(2.2rem,5.5vw,3.4rem);line-height:1.05;margin:8px 0 12px;
+      color:var(--orange);text-shadow:0 0 20px rgba(255,122,26,.35);
+    }
+    .sec-head p{color:var(--muted)}
+
+    /* Premiação */
+    .prizes{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    @media (max-width:760px){.prizes{grid-template-columns:1fr}}
+    .prize{
+      position:relative;overflow:hidden;
+      background:var(--card);border:1px solid var(--line);border-radius:22px;
+      padding:30px 26px;
+    }
+    .prize::before{
+      content:"";position:absolute;inset:-40% -30% auto auto;width:260px;height:260px;border-radius:50%;
+      background:radial-gradient(circle,var(--glow) 0%,transparent 65%);opacity:.35;
+    }
+    .prize.calouros{--glow:var(--green);--accent:var(--green)}
+    .prize.veteranos{--glow:var(--cyan);--accent:var(--cyan)}
+    .prize .who{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+    .prize .who .emo{font-size:2.4rem}
+    .prize h3{font-family:"Bebas Neue",sans-serif;font-weight:400;font-size:2.4rem;letter-spacing:2px;color:var(--accent);line-height:1}
+    .prize .rule{color:var(--muted);font-size:.95rem;margin-bottom:22px}
+    .podium{display:grid;gap:12px}
+    .place{
+      display:flex;align-items:center;gap:14px;
+      background:rgba(255,255,255,.03);border:1px solid var(--line);
+      border-radius:14px;padding:14px 16px;
+    }
+    .place .medal{font-size:1.8rem}
+    .place b{display:block;font-size:1.05rem}
+    .place small{color:var(--muted)}
+    .prize-note{text-align:center;color:var(--muted);margin-top:22px;font-size:.95rem}
+
+    /* Destaques */
+    .features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    @media (max-width:980px){.features{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:520px){.features{grid-template-columns:1fr}}
+    .feature{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+      padding:26px 22px;transition:transform .2s ease,border-color .2s ease;
+    }
+    .feature:hover{transform:translateY(-4px);border-color:var(--orange)}
+    .feature .emo{font-size:2.2rem;margin-bottom:10px}
+    .feature h3{font-size:1.15rem;margin-bottom:6px}
+    .feature p{color:var(--muted);font-size:.95rem}
+
+    /* Como funciona */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+    @media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:520px){.steps{grid-template-columns:1fr}}
+    .step{
+      position:relative;background:var(--bg-2);border:1px dashed var(--line);
+      border-radius:var(--radius);padding:26px 22px 22px;
+    }
+    .step::before{
+      counter-increment:s;content:counter(s);
+      position:absolute;top:-16px;left:20px;width:34px;height:34px;border-radius:50%;
+      display:grid;place-items:center;font-weight:800;color:#1a0d00;
+      background:linear-gradient(135deg,var(--orange),var(--orange-2));
+    }
+    .step h3{font-size:1.05rem;margin:6px 0}
+    .step p{color:var(--muted);font-size:.93rem}
+
+    /* FAQ */
+    .faq{max-width:760px;margin:0 auto;display:grid;gap:12px}
+    details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px 20px}
+    summary{cursor:pointer;list-style:none;padding:14px 0;font-weight:600;display:flex;justify-content:space-between;gap:12px}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";color:var(--orange);font-size:1.4rem;line-height:1;transition:transform .2s}
+    details[open] summary::after{transform:rotate(45deg)}
+    details p{color:var(--muted);padding:0 0 16px}
+
+    /* CTA final */
+    .final{
+      text-align:center;border-radius:28px;padding:56px 24px;
+      background:
+        radial-gradient(circle at 20% 20%,rgba(140,255,58,.12),transparent 40%),
+        radial-gradient(circle at 80% 80%,rgba(255,63,164,.14),transparent 45%),
+        linear-gradient(135deg,#24133a,#1a0f2b);
+      border:1px solid var(--line);
+    }
+    .final h2{font-family:"Creepster",cursive;font-weight:400;letter-spacing:2px;font-size:clamp(2.2rem,6vw,3.8rem);color:var(--orange);line-height:1.05}
+    .final p{color:var(--muted);margin:14px auto 26px;max-width:520px}
+
+    footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.9rem;text-align:center}
+
+    /* Barra fixa no celular */
+    .mobile-cta{
+      position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;
+    }
+    .mobile-cta .btn{width:100%}
+    @media (max-width:820px){.mobile-cta{display:block}footer{padding-bottom:90px}}
+
+    /* Aviso de formulário */
+    .toast{
+      position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);
+      background:var(--card);border:1px solid var(--orange);color:var(--text);
+      padding:14px 20px;border-radius:12px;z-index:100;opacity:0;pointer-events:none;
+      transition:opacity .25s,transform .25s;max-width:calc(100% - 32px);text-align:center;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+    /* Animação de entrada */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Olhos brilhando ao fundo (gerados por JS) -->
+  <div class="eyes" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#topo">🎃 Hackathon <b>Projeção</b></a>
+      <ul>
+        <li><a href="#premiacao">Premiação</a></li>
+        <li><a href="#destaques">O que rola</a></li>
+        <li><a href="#como-funciona">Como funciona</a></li>
+        <li><a href="#faq">Dúvidas</a></li>
+      </ul>
+      <a class="btn sm js-inscricao" href="#">Inscreva-se</a>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="tag">👻 Edição Halloween 2026</span>
+          <h1>Hackathon<small>do Projeção</small></h1>
+          <p class="lead">Ideias <strong>assustadoramente incríveis</strong> ganham vida aqui! Monte seu time, encare o desafio e transforme código em algo de arrepiar.</p>
+
+          <div class="facts">
+            <div class="fact"><span class="ic">📅</span> 30 de outubro</div>
+            <div class="fact"><span class="ic">⏰</span> A partir das 08:00</div>
+            <div class="fact"><span class="ic">🏆</span> Premiação por categoria</div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn pulse js-inscricao" href="#">🧟 Quero me inscrever</a>
+            <a class="btn ghost" href="#premiacao">Ver premiação</a>
+          </div>
+        </div>
+
+        <figure class="poster">
+          <img src="assets/chamada.jpg" width="1200" height="1200"
+               alt="Arte do Hackathon do Projeção: dois zumbis programando em notebooks, abóbora de Halloween e a data 30/10.">
+        </figure>
+      </div>
+
+      <div class="wrap">
+        <div class="countdown reveal" aria-live="polite">
+          <h2>A noite das bruxas do código começa em</h2>
+          <div class="timer" id="timer">
+            <div class="unit"><b id="d">--</b><span>dias</span></div>
+            <div class="unit"><b id="h">--</b><span>horas</span></div>
+            <div class="unit"><b id="m">--</b><span>min</span></div>
+            <div class="unit"><b id="s">--</b><span>seg</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREMIAÇÃO -->
+    <section id="premiacao">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="kicker">Premiação</span>
+          <h2>Quatro times saem premiados</h2>
+          <p>Os dois primeiros colocados de cada categoria levam prêmio. Calouro compete com calouro, veterano compete com veterano.</p>
+        </div>
+
+        <div class="prizes">
+          <article class="prize calouros reveal">
+            <div class="who"><span class="emo">🧟</span><h3>Calouros</h3></div>
+            <p class="rule">Estudantes do 1º e 2º semestre</p>
+            <div class="podium">
+              <div class="place"><span class="medal">🥇</span><div><b>1º lugar</b><small>Premiação para o time campeão</small></div></div>
+              <div class="place"><span class="medal">🥈</span><div><b>2º lugar</b><small>Premiação para o vice</small></div></div>
+            </div>
+          </article>
+
+          <article class="prize veteranos reveal">
+            <div class="who"><span class="emo">🧛</span><h3>Veteranos</h3></div>
+            <p class="rule">Estudantes a partir do 3º semestre</p>
+            <div class="podium">
+              <div class="place"><span class="medal">🥇</span><div><b>1º lugar</b><small>Premiação para o time campeão</small></div></div>
+              <div class="place"><span class="medal">🥈</span><div><b>2º lugar</b><small>Premiação para o vice</small></div></div>
+            </div>
+          </article>
+        </div>
+        <p class="prize-note reveal">🎁 E tem brinde para quem participar. Os prêmios serão revelados em breve.</p>
+      </div>
+    </section>
+
+    <!-- DESTAQUES -->
+    <section id="destaques" style="background:linear-gradient(180deg,transparent,var(--bg-2) 30%,var(--bg-2) 70%,transparent)">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="kicker">O que te espera</span>
+          <h2>Um dia inteiro de arrepios</h2>
+          <p>Não é só código. É desafio, fantasia, risada e muita programação do começo ao fim.</p>
+        </div>
+
+        <div class="features">
+          <div class="feature reveal"><div class="emo">🏆</div><h3>Premiação</h3><p>Prêmios para os dois melhores times de Calouros e de Veteranos.</p></div>
+          <div class="feature reveal"><div class="emo">🎁</div><h3>Brindes</h3><p>Lembranças assombradas para quem encarar o desafio.</p></div>
+          <div class="feature reveal"><div class="emo">🦇</div><h3>Atividades temáticas</h3><p>Dinâmicas de Halloween ao longo do dia para quebrar o gelo (e os bugs).</p></div>
+          <div class="feature reveal"><div class="emo">🎉</div><h3>Diversão</h3><p>Venha fantasiado, traga sua turma e aproveite o clima de terror do bem.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
+    <section id="como-funciona">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="kicker">Como funciona</span>
+          <h2>Do feitiço ao pitch</h2>
+          <p>Quatro passos entre você e o pódio.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal"><h3>Inscreva-se</h3><p>Preencha o formulário de inscrição e garanta sua vaga.</p></div>
+          <div class="step reveal"><h3>Chegue às 08:00</h3><p>Dia 30/10 abrimos os portões e revelamos o desafio.</p></div>
+          <div class="step reveal"><h3>Crie e codifique</h3><p>Seu time transforma a ideia em um protótipo funcionando.</p></div>
+          <div class="step reveal"><h3>Apresente</h3><p>Mostre a solução para a banca e dispute o pódio da sua categoria.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <span class="kicker">Dúvidas</span>
+          <h2>Perguntas frequentes</h2>
+        </div>
+        <div class="faq reveal">
+          <details>
+            <summary>Quem pode participar?</summary>
+            <p>Estudantes do Projeção. Quem está no 1º ou 2º semestre compete na categoria Calouros; a partir do 3º semestre, na categoria Veteranos.</p>
+          </details>
+          <details>
+            <summary>Preciso ser expert em programação?</summary>
+            <p>Não. A divisão entre Calouros e Veteranos existe justamente para que todo mundo dispute em pé de igualdade. Vontade de aprender já é meio caminho.</p>
+          </details>
+          <details>
+            <summary>Quando e que horas começa?</summary>
+            <p>Dia 30 de outubro de 2026, com início às 08:00. Chegue um pouco antes para o credenciamento.</p>
+          </details>
+          <details>
+            <summary>Posso ir fantasiado?</summary>
+            <p>Deve! É edição de Halloween. Zumbis, bruxas e vampiros programadores são muito bem-vindos.</p>
+          </details>
+          <details>
+            <summary>Como faço a inscrição?</summary>
+            <p>Clique em qualquer botão "Inscreva-se" desta página e preencha o formulário.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section>
+      <div class="wrap">
+        <div class="final reveal">
+          <h2>Tem coragem?</h2>
+          <p>As vagas são limitadas e o desafio não vai esperar. Garanta seu lugar no Hackathon do Projeção.</p>
+          <a class="btn pulse js-inscricao" href="#">🎃 Fazer minha inscrição</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      Hackathon do Projeção 2026 · Edição Halloween · 30/10 a partir das 08:00
+    </div>
+  </footer>
+
+  <div class="mobile-cta"><a class="btn js-inscricao" href="#">🧟 Inscreva-se</a></div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    /* =========================================================
+       CONFIGURAÇÃO: cole aqui o link do formulário de inscrição
+       Ex.: const FORM_URL = "https://forms.gle/xxxxxxxx";
+       ========================================================= */
+    const FORM_URL = "";
+
+    /* Data e hora do evento (horário de Brasília) */
+    const EVENT_DATE = new Date("2026-10-30T08:00:00-03:00");
+
+    /* ---------- Botões de inscrição ---------- */
+    const toast = document.getElementById("toast");
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(showToast.t);
+      showToast.t = setTimeout(() => toast.classList.remove("show"), 3200);
+    }
+    document.querySelectorAll(".js-inscricao").forEach(a => {
+      if (FORM_URL) {
+        a.href = FORM_URL;
+        a.target = "_blank";
+        a.rel = "noopener";
+      } else {
+        a.addEventListener("click", e => {
+          e.preventDefault();
+          showToast("👻 As inscrições abrem em breve. Fique de olho!");
+        });
+      }
+    });
+
+    /* ---------- Contagem regressiva ---------- */
+    const el = { d:document.getElementById("d"), h:document.getElementById("h"),
+                 m:document.getElementById("m"), s:document.getElementById("s") };
+    const pad = n => String(n).padStart(2, "0");
+    function tick(){
+      const diff = EVENT_DATE - new Date();
+      if (diff <= 0) {
+        document.getElementById("timer").innerHTML =
+          '<p class="timer-done">O Hackathon começou! 🎃</p>';
+        return clearInterval(timer);
+      }
+      const s = Math.floor(diff / 1000);
+      el.d.textContent = pad(Math.floor(s / 86400));
+      el.h.textContent = pad(Math.floor(s % 86400 / 3600));
+      el.m.textContent = pad(Math.floor(s % 3600 / 60));
+      el.s.textContent = pad(s % 60);
+    }
+    const timer = setInterval(tick, 1000);
+    tick();
+
+    /* ---------- Olhos brilhando no fundo ---------- */
+    const colors = ["#8cff3a", "#3ef0e6", "#ffb020", "#ff7a1a", "#ff3fa4", "#d6ff3a"];
+    const eyes = document.querySelector(".eyes");
+    const total = window.innerWidth < 600 ? 9 : 16;
+    for (let i = 0; i < total; i++) {
+      const e = document.createElement("div");
+      e.className = "eye";
+      e.style.left = Math.random() * 96 + "%";
+      e.style.top = Math.random() * 96 + "%";
+      e.style.color = colors[i % colors.length];
+      e.style.scale = (0.5 + Math.random() * 0.8).toFixed(2);
+      e.style.opacity = (0.25 + Math.random() * 0.45).toFixed(2);
+      e.style.animationDelay = (Math.random() * 6).toFixed(2) + "s";
+      e.style.animationDuration = (4 + Math.random() * 5).toFixed(2) + "s";
+      e.innerHTML = "<span></span><span></span>";
+      eyes.appendChild(e);
+    }
+
+    /* ---------- Animação ao rolar ---------- */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(n => io.observe(n));
+  </script>
+</body>
+</html>
